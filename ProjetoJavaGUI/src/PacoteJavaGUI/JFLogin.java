@@ -5,6 +5,9 @@
  */
 package PacoteJavaGUI;
 
+import javax.swing.JOptionPane;
+import jdk.nashorn.internal.scripts.JO;
+
 /**
  *
  * @author Laercio-pc
@@ -36,17 +39,13 @@ public class JFLogin extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         lblNome.setBackground(new java.awt.Color(0, 204, 204));
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNome.setText("Usuário:");
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
 
         lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSenha.setText("Senha:");
@@ -61,6 +60,11 @@ public class JFLogin extends javax.swing.JFrame {
 
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PacoteJavaGUI/world.png"))); // NOI18N
 
@@ -112,14 +116,33 @@ public class JFLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        //Sistema de validação
+        String nome = txtNome.getText();
+
+        String senha = txtSenha.getText();
+
+        if (nome.equals("etecia") && senha.equals("etecia")) {
+            //Abrindo janela após validação
+            JFMenuPrincipal abrir = new JFMenuPrincipal();
+            abrir.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!!!");
+            limparCampos();
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    public void limparCampos() {
+        txtNome.setText("");
+        txtSenha.setText("");
+        txtNome.grabFocus();
+    }
 
     /**
      * @param args the command line arguments
