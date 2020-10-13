@@ -79,6 +79,11 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         btnClientes.setText("Clientes");
         btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
 
         btnProdutos.setBackground(new java.awt.Color(40, 183, 121));
         btnProdutos.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
@@ -179,6 +184,14 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        // TODO add your handling code here:
+        //Abrindo janela de cadastro de clientes
+        JFCadastroClientes abrir = new JFCadastroClientes();
+        abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnClientesActionPerformed
 
     /**
      * @param args the command line arguments
